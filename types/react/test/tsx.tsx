@@ -458,7 +458,7 @@ type propTypesTest2 = typeof testPropTypes extends DeclaredPropTypes<TestPropTyp
 // $ExpectType true
 type propTypesTest3 = typeof testPropTypes extends DeclaredPropTypes<TestPropTypesProps3> ? true : false;
 function CustomSelect(props: {
-    children: Array<
+    children: ReadonlyArray<
       React.ReactElement<
         React.ComponentPropsWithoutRef<typeof CustomSelectOption>
       >
@@ -491,4 +491,24 @@ function Example() {
         <CustomSelectOption value="two">Two</CustomSelectOption>
         </CustomSelect>
     );
+}
+
+function reactNodeTests() {
+    function *createChildren() {
+        yield <div key="one">one</div>;
+        yield <div key="two">two</div>;
+    }
+
+    <div>{Object.freeze([<div key="one">one</div>, <div key="two">two</div>])}</div>;
+    <div>{new Set([<div key="one">one</div>, <div key="two">two</div>])}</div>;
+    // TODO: This warns at runtime so we should probably reject it as well
+    <div>
+        {
+            new Map([
+                ['one', <div key="one">one</div>],
+                ['two', <div key="two">two</div>],
+            ])
+        }
+    </div>;
+    <div>{createChildren()}</div>;
 }

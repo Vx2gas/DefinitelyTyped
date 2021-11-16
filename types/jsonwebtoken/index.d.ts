@@ -4,7 +4,7 @@
 //                 Daniel Heim <https://github.com/danielheim>,
 //                 Brice BERNARD <https://github.com/brikou>,
 //                 Veli-Pekka Kestilä <https://github.com/vpk>,
-//                 Daniel Parker <https://github.com/rlgod>,
+//                 Daniel Parker <https://github.com/GeneralistDev>,
 //                 Kjell Dießel <https://github.com/kettil>,
 //                 Robert Gajda <https://github.com/RunAge>,
 //                 Nico Flaig <https://github.com/nflaig>,
@@ -84,11 +84,7 @@ export interface VerifyOptions {
      */
     nonce?: string | undefined;
     subject?: string | undefined;
-    /**
-     * @deprecated
-     * Max age of token
-     */
-    maxAge?: string | undefined;
+    maxAge?: string | number | undefined;
 }
 
 export interface DecodeOptions {

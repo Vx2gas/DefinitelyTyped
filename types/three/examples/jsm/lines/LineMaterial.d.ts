@@ -1,6 +1,7 @@
 import { Color, MaterialParameters, ShaderMaterial, Vector2 } from '../../../src/Three';
 
 export interface LineMaterialParameters extends MaterialParameters {
+    alphaToCoverage?: boolean | undefined;
     color?: number | undefined;
     dashed?: boolean | undefined;
     dashScale?: number | undefined;
@@ -9,6 +10,8 @@ export interface LineMaterialParameters extends MaterialParameters {
     gapSize?: number | undefined;
     linewidth?: number | undefined;
     resolution?: Vector2 | undefined;
+    wireframe?: boolean | undefined;
+    worldUnits?: boolean | undefined;
 }
 
 export class LineMaterial extends ShaderMaterial {
@@ -24,4 +27,5 @@ export class LineMaterial extends ShaderMaterial {
     linewidth: number;
     resolution: Vector2;
     alphaToCoverage: boolean;
+    worldUnits: boolean;
 }

@@ -1,4 +1,4 @@
-// Type definitions for mssql 7.1.0
+// Type definitions for mssql 7.1.3
 // Project: https://www.npmjs.com/package/mssql
 // Definitions by: COLSA Corporation <http://www.colsa.com/>
 //                 Jørgen Elgaard Larsen <https://github.com/elhaard>
@@ -393,3 +393,23 @@ export declare class PreparedStatement extends events.EventEmitter {
 }
 
 export declare class PreparedStatementError extends MSSQLError {}
+
+/**
+ * Open global connection pool.
+ * @param config Connection configuration object or connection string
+ */
+export declare function connect(config: config | string): Promise<ConnectionPool>;
+
+/**
+ * Open global connection pool.
+ * @param config Connection configuration object or connection string.
+ * @param callback A callback which is called after connection has established, or an error has occurred
+ */
+export declare function connect(config: config | string, callback?: (err?: Error) => void): void;
+
+
+export declare function query(command: string): Promise<IResult<any>>;
+export declare function query(command: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
+export declare function query<Entity>(command: string): Promise<IResult<Entity>>;
+export declare function query<Entity>(command: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<Entity>>;
+export declare function query<Entity>(command: string, callback: (err?: Error, recordset?: IResult<Entity>) => void): void;

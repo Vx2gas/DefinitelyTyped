@@ -14,8 +14,10 @@ import {
     Collage,
     ColorSchemeProvider,
     Column,
+    ComboBox,
     CompositeZIndex,
     Container,
+    Datapoint,
     Divider,
     Dropdown,
     Fieldset,
@@ -33,6 +35,7 @@ import {
     Masonry,
     Modal,
     Module,
+    NumberField,
     OnLinkNavigationProvider,
     PageHeader,
     Pog,
@@ -47,6 +50,7 @@ import {
     Sheet,
     Spinner,
     Stack,
+    Status,
     Sticky,
     Switch,
     Table,
@@ -58,7 +62,6 @@ import {
     TextField,
     Toast,
     Tooltip,
-    Typeahead,
     Upsell,
     useFocusVisible,
     useReducedMotion,
@@ -146,6 +149,13 @@ const CheckUseReducedMotion = () => {
     <Button text={'Click me'} />
 </ButtonGroup>;
 <Card />;
+<ComboBox
+    accessibilityClearButtonLabel="combobox"
+    id="combobox"
+    label="combobox"
+    noResultText="combobox"
+    options={[{ label: 'combobox', value: 'combobox' }]}
+/>;
 <Callout
     type="info"
     iconAccessibilityLabel="Info icon"
@@ -216,6 +226,7 @@ const CheckUseReducedMotion = () => {
     expandedIndex={1}
     onExpandedChange={index => {}}
 ></Module.Expandable>;
+<NumberField id="number" onChange={({ value }) => value} step={1}/>;
 <OnLinkNavigationProvider
     onNavigation={() => {
         return undefined;
@@ -241,19 +252,20 @@ const CheckUseReducedMotion = () => {
 >
     {({ onDismissStart }) => <Heading>Content {onDismissStart}</Heading>}
 </Sheet>;
+<Spinner show={true} accessibilityLabel="Example spinner" />;
 <Stack alignItems="center" gap={2}>
     <div />
     <div />
     <div />
 </Stack>;
-<Spinner show={true} accessibilityLabel="Example spinner" />;
+<Status type="problem" />;
 <Sticky top={0}>
     <div>Hello World</div>
 </Sticky>;
 <Switch id="id" onChange={() => {}} />;
-<Table maxHeight={1} />;
-<Table maxHeight="75vh" />;
-<Table>
+<Table accessibilityLabel="max height test" maxHeight={1} />;
+<Table accessibilityLabel="max height test 2" maxHeight="75vh" />;
+<Table accessibilityLabel="complex table">
     <Table.Header>
         <Table.Row>
             <Table.SortableHeaderCell onSortChange={() => {}} sortOrder={'asc'} status={'active'}>
@@ -338,17 +350,10 @@ const CheckUseReducedMotion = () => {
 <TextArea id="id" onChange={() => {}} />;
 <TextField id="email" onChange={({ value }) => value} tags={[<Tag text="Foo" />, <Tag text="Bar" />]} />;
 
-<Toast color="red" text={<>Oops! Something went wrong. Please try again later.</>} />;
+<Toast variant="error" text={<>Oops! Something went wrong. Please try again later.</>} />;
 <Tooltip text="tooltip">
     <div />
 </Tooltip>;
-<Typeahead
-    label="Typeahead Example 1"
-    id="Typeahead-example"
-    noResultText="No Results"
-    options={[{ value: 'Hello', label: 'World' }]}
-    placeholder="Select a Label"
-/>;
 <Upsell
     message="Hello world"
     imageData={{
@@ -385,3 +390,10 @@ const CheckUseReducedMotion = () => {
 
 new FixedZIndex(1);
 new CompositeZIndex([new FixedZIndex(1), new CompositeZIndex([new FixedZIndex(1)])]);
+
+<Datapoint
+    title="Test Value"
+    value="100"
+    trend={{ accesibilityLabel: 'Trending up', value: 50 }}
+    trendSentiment="good"
+/>;

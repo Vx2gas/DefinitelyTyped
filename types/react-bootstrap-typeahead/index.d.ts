@@ -146,6 +146,8 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
     /* Whether or not filtering should be case-sensitive. */
     caseSensitive?: boolean | undefined;
 
+    children?: React.ReactNode | ((props: any) => React.ReactNode);
+
     /* Displays a button to clear the input when there are selections. */
     clearButton?: boolean | undefined;
 
@@ -212,6 +214,9 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
 
     /* Whether or not multiple selections are allowed. */
     multiple?: boolean | undefined;
+
+	/* Override default new selection text. */
+    newSelectionPrefix?: JSX.Element | string;
 
     /* Invoked when the input is blurred. Receives an event. */
     onBlur?: ((e: Event) => void) | undefined;
